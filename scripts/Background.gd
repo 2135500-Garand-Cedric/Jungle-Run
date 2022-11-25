@@ -2,7 +2,7 @@ extends CanvasLayer
 
 
 export var startPosY = 500
-export var speed = 10
+export var speed = 5
 
 onready var bg = [$Sprite, $Sprite2, $Sprite3]
 
