@@ -138,7 +138,6 @@ animations = [ {
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-speed = null
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2( 1.5, 15.5 )
@@ -146,7 +145,7 @@ shape = SubResource( 1 )
 
 [node name="Visual" type="AnimatedSprite" parent="."]
 frames = SubResource( 10 )
-frame = 5
+frame = 2
 speed_scale = 1.5
 playing = true
 __meta__ = {
