@@ -32,8 +32,6 @@ func _physics_process(delta):
 # 
 # Selon les entrées de l'utilisateur
 # - modifie les variable de déplacement 
-# - active les armes
-func getInput():
 	velocity = Vector2()
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = Shuriken.instance()
