@@ -35,26 +35,26 @@ tile_set = SubResource( 1 )
 format = 1
 tile_data = PoolIntArray( -196608, 0, 0, -196607, 0, 1, -196606, 0, 1, -196605, 0, 1, -196604, 0, 1, -196603, 0, 1, -196602, 0, 1, -196601, 0, 1, -196600, 0, 1, -196599, 0, 1, -196598, 0, 1, -196597, 0, 1, -196596, 0, 1, -196595, 0, 1, -196594, 0, 1, -196593, 0, 1, -196592, 0, 1, -196591, 0, 1, -196590, 0, 1, -196589, 0, 1, -196588, 0, 1, -196587, 0, 1, -196586, 0, 1, -196585, 0, 1, -196584, 0, 2, 0, 0, 0, 1, 0, 1, 2, 0, 1, 3, 0, 1, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 1, 12, 0, 1, 13, 0, 1, 14, 0, 1, 15, 0, 1, 16, 0, 1, 17, 0, 1, 18, 0, 1, 19, 0, 1, 20, 0, 1, 21, 0, 1, 22, 0, 1, 23, 0, 1, 24, 0, 2, 196608, 0, 0, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 1, 196615, 0, 1, 196616, 0, 1, 196617, 0, 1, 196618, 0, 1, 196619, 0, 1, 196620, 0, 1, 196621, 0, 1, 196622, 0, 1, 196623, 0, 1, 196624, 0, 1, 196625, 0, 1, 196626, 0, 1, 196627, 0, 1, 196628, 0, 1, 196629, 0, 1, 196630, 0, 1, 196631, 0, 1, 196632, 0, 2, 393216, 0, 0, 393217, 0, 1, 393218, 0, 1, 393219, 0, 1, 393220, 0, 1, 393221, 0, 1, 393222, 0, 1, 393223, 0, 1, 393224, 0, 1, 393225, 0, 1, 393226, 0, 1, 393227, 0, 1, 393228, 0, 1, 393229, 0, 1, 393230, 0, 1, 393231, 0, 1, 393232, 0, 1, 393233, 0, 1, 393234, 0, 1, 393235, 0, 1, 393236, 0, 1, 393237, 0, 1, 393238, 0, 1, 393239, 0, 1, 393240, 0, 2 )
 
-[node name="Plateforme" type="StaticBody2D" parent="."]
+[node name="Plateforme0" type="StaticBody2D" parent="."]
 
-[node name="Collider" type="CollisionShape2D" parent="Plateforme"]
+[node name="Collider" type="CollisionShape2D" parent="Plateforme0"]
 position = Vector2( 800, -166 )
+shape = SubResource( 2 )
+
+[node name="Plateforme1" type="StaticBody2D" parent="."]
+
+[node name="Collider" type="CollisionShape2D" parent="Plateforme1"]
+position = Vector2( 800, 24 )
 shape = SubResource( 2 )
 
 [node name="Plateforme2" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Plateforme2"]
-position = Vector2( 800, 24 )
+position = Vector2( 800, 219 )
 shape = SubResource( 2 )
 
 [node name="Plateforme3" type="StaticBody2D" parent="."]
 
 [node name="Collider" type="CollisionShape2D" parent="Plateforme3"]
-position = Vector2( 800, 219 )
-shape = SubResource( 2 )
-
-[node name="Plateforme4" type="StaticBody2D" parent="."]
-
-[node name="Collider" type="CollisionShape2D" parent="Plateforme4"]
 position = Vector2( 800, 412 )
 shape = SubResource( 2 )

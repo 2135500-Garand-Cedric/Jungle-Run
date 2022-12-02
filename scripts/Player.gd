@@ -2,14 +2,13 @@ extends KinematicBody2D
 
 # variable déterminant la vitesse
 # exportée pour pouvoir la modifier dans l'éditeur
-export var speed = 500.0
-export var gravity = 250.0
-var plateforme = 3
+export var speed = 450.0
+export var gravity = 500.0
+var niveau_plateforme = 2
 # variables pour instancier les armes
 var Shuriken = preload("res://scenes/Shuriken.tscn")
 # variable pour espacer les tirs
-
-onready var plateformes = []
+onready var plateformes = [get_parent().get_node("Plateforme/Plateforme0/Collider"), get_parent().get_node("Plateforme/Plateforme1/Collider"), get_parent().get_node("Plateforme/Plateforme2/Collider"), get_parent().get_node("Plateforme/Plateforme3/Collider")]
 
 # variable contenant le vecteur final de déplacement
 var velocity = Vector2();
@@ -24,7 +23,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	for i in get_slide_count():
 		var collision = get_slide_collision(i)
-		if collision.collider.name != "Plateforme" and collision.collider.name != "Plateforme2" and collision.collider.name != "Plateforme3" and collision.collider.name != "Plateforme4":
+		if collision.collider.name == "Enemy":
 			$Visual.play("dead")
 	if $Visual.animation == "dead" and $Visual.frame == 4:
 		$Visual.playing = false
@@ -32,6 +31,8 @@ func _physics_process(delta):
 	if $Visual.animation == "jump" and $Visual.frame == 8:
 		$Visual.play("default")
 		$Visual.frame = 0
+		for i in range(4):
+			plateformes[i].disabled = false
 		
 
 # getInput
@@ -39,18 +40,23 @@ func _physics_process(delta):
 # Selon les entrées de l'utilisateur
 # - modifie les variable de déplacement 
 func getInput():
-	if Input.is_action_pressed("left"):
+	if Input.is_action_pressed("left")and position .x >= 60:
 		velocity.x += -speed
 		$Visual.flip_h = true
-	if Input.is_action_pressed("right"):
+	if Input.is_action_pressed("right") and position.x <= 1450:
 		velocity.x += speed
 		$Visual.flip_h = false
 	if Input.is_action_just_pressed("shoot"):
 		var bullet = Shuriken.instance()
-		bullet._shoot(position)
+		bullet._shoot(position, $Visual.flip_h)
 		get_parent().add_child(bullet)
-	elif Input.is_action_just_pressed("up"):
-		
+	elif Input.is_action_just_pressed("up") and is_on_floor() and niveau_plateforme != 0:
+		plateformes[niveau_plateforme-1].disabled = true
+		velocity.y += -450
+		niveau_plateforme += -1
 		$Visual.play("jump")
-	elif Input.is_action_just_pressed("down"):
+	elif Input.is_action_just_pressed("down") and is_on_floor() and niveau_plateforme != 3:
+		plateformes[niveau_plateforme].disabled = true
+		velocity.y += -100
+		niveau_plateforme += 1
 		$Visual.play("jump")
