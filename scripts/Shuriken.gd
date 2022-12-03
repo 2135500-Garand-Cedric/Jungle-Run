@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var speed = 600
 var velocity = Vector2()
+onready var timer = $Timer
 
 
 func _shoot(pos, flip_h):
@@ -16,6 +17,10 @@ func _shoot(pos, flip_h):
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if collision:
-		queue_free()
+		timer.start()
 	if position.x >= 2000 or position.x <= -100:
 		queue_free()
+
+
+func _on_Timer_timeout():
+	queue_free()

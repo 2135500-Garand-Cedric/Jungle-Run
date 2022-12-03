@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/EnemySpawnPoints.gd" type="Script" id=1]
+
+[node name="EnemySpawnPoints" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Spawn0" type="Position2D" parent="."]
+position = Vector2( 1600, 104 )
+
+[node name="Spawn1" type="Position2D" parent="."]
+position = Vector2( 1600, 295 )
+
+[node name="Spawn2" type="Position2D" parent="."]
+position = Vector2( 1600, 487 )
+
+[node name="Spawn3" type="Position2D" parent="."]
+position = Vector2( 1600, 680 )

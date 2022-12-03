@@ -4,17 +4,20 @@ extends KinematicBody2D
 # exportée pour pouvoir la modifier dans l'éditeur
 export var speed = 450.0
 export var gravity = 500.0
+export var score = 0
 var niveau_plateforme = 2
 # variables pour instancier les armes
 var Shuriken = preload("res://scenes/Shuriken.tscn")
-# variable pour espacer les tirs
-onready var plateformes = [get_parent().get_node("Plateforme/Plateforme0/Collider"), get_parent().get_node("Plateforme/Plateforme1/Collider"), get_parent().get_node("Plateforme/Plateforme2/Collider"), get_parent().get_node("Plateforme/Plateforme3/Collider")]
-
+var plateformes
+var generate = true
 # variable contenant le vecteur final de déplacement
 var velocity = Vector2();
 
 
 func _physics_process(delta):
+	if generate:
+		plateformes = [get_node("/root/Main/Level1/Plateforme/Plateforme0/Collider"), get_node("/root/Main/Level1/Plateforme/Plateforme1/Collider"), get_node("/root/Main/Level1/Plateforme/Plateforme2/Collider"), get_node("/root/Main/Level1/Plateforme/Plateforme3/Collider")]
+		generate = false
 	# gestion des entrées de l'utilisateur
 	velocity.x = 0
 	getInput()
@@ -60,3 +63,4 @@ func getInput():
 		velocity.y += -100
 		niveau_plateforme += 1
 		$Visual.play("jump")
+
