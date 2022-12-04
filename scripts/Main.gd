@@ -8,6 +8,7 @@ onready var player = $Player
 func _ready():
 	current_level_node = levels[current_level].instance()
 	current_level_node.connect("finished",self,"_on_Level_Finished")
+	current_level_node.connect("dead",self,"_on_Player_Death")
 	add_child(current_level_node)
 
 
@@ -17,6 +18,10 @@ func _on_Level_Finished():
 	current_level = next_level
 	
 	next_level_node.connect("finished", self, "_on_Level_Finished")
+	current_level_node.connect("dead",self,"_on_Player_Death")
 	current_level_node.queue_free()
 	add_child(next_level_node)
 	current_level_node = next_level_node
+
+func _on_Player_Death():
+	print("dead")
