@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/QuartzoBold-W9lv.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/Carre-JWja.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 52.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer"]
+margin_left = 385.0
+margin_right = 639.0
+margin_bottom = 52.0
+alignment = 1
+
+[node name="Score" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_top = 10.0
+margin_right = 92.0
+margin_bottom = 42.0
+size_flags_horizontal = 0
+custom_fonts/font = SubResource( 1 )
+text = "Score:"
+align = 1
+
+[node name="ScoreVal" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 96.0
+margin_top = 9.0
+margin_right = 96.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 3 )
+
+[node name="Vies" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 100.0
+margin_top = 10.0
+margin_right = 166.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 5 )
+text = "Vies:"
+
+[node name="ViesVal" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 170.0
+margin_top = 9.0
+margin_right = 170.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 6 )
+
+[node name="Level" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 174.0
+margin_top = 10.0
+margin_right = 250.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 2 )
+text = "Level:"
+
+[node name="LevelVal" type="Label" parent="AspectRatioContainer/HBoxContainer"]
+margin_left = 254.0
+margin_top = 9.0
+margin_right = 254.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 4 )

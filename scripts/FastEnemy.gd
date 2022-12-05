@@ -10,8 +10,10 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if position.x <= -100:
 		queue_free()
+		Global.vies += -1
 	if $Visual.animation == "dead" and $Visual.frame == 4:
 		queue_free()
+		Global.score += 150
 
 
 

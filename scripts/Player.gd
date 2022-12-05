@@ -5,7 +5,6 @@ signal player_dead()
 # exportée pour pouvoir la modifier dans l'éditeur
 export var speed = 450.0
 export var gravity = 500.0
-export var score = 0
 var niveau_plateforme = 2
 # variables pour instancier les armes
 var Shuriken = preload("res://scenes/Shuriken.tscn")
@@ -16,6 +15,10 @@ var velocity = Vector2();
 var emitted = false
 var time = 0
 
+func _process(delta):
+	if Global.vies <= 0 and !emitted:
+		emit_signal("player_dead")
+		emitted = true
 
 func _physics_process(delta):
 	# gestion des entrées de l'utilisateur

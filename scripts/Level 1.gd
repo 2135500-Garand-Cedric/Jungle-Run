@@ -11,8 +11,7 @@ func _ready():
 	player.plateformes = plateformes
 
 func _on_Timer_timeout():
-	if player.score < 1000:
+	if Global.score < 5000:
 		spawner._send_enemy(1)
-		player.score += 100
 	else:
 		emit_signal("finished")

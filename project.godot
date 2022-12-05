@@ -14,6 +14,10 @@ config/name="Jungle Run"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scripts/Global.gd"
+
 [display]
 
 window/size/test_width=1024
