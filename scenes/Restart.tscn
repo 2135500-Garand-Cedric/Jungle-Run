@@ -1,0 +1,17 @@
+[gd_scene format=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Button" type="Button" parent="."]
+margin_left = 48.0
+margin_top = 88.0
+margin_right = 127.0
+margin_bottom = 108.0
+
+[node name="Button2" type="Button" parent="."]
+anchor_left = 0.115
+anchor_right = 0.115
+margin_left = -1.76
+margin_top = 1.0
+margin_right = 95.24
+margin_bottom = 21.0

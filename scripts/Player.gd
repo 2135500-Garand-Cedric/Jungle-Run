@@ -13,6 +13,8 @@ var plateformes
 onready var visual = $Visual
 # variable contenant le vecteur final de déplacement
 var velocity = Vector2();
+var emitted = false
+var time = 0
 
 
 func _physics_process(delta):
@@ -29,9 +31,10 @@ func _physics_process(delta):
 	if visual.animation == "dead" and visual.frame == 4:
 		visual.playing = false
 		visual.frame = 4
-		print("1")
-		emit_signal("player_dead")
-		print("2")
+		time += delta
+		if !emitted and time >= 0.5:
+			emit_signal("player_dead")
+			emitted = true
 	if visual.animation == "jump" and visual.frame == 8:
 		visual.play("default")
 		visual.frame = 0

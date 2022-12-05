@@ -148,9 +148,11 @@ shape = SubResource( 1 )
 
 [node name="Visual" type="AnimatedSprite" parent="."]
 frames = SubResource( 10 )
-frame = 1
+frame = 7
 speed_scale = 1.5
 playing = true
 __meta__ = {
 "_edit_lock_": true
 }
+
+[connection signal="player_dead" from="." to="." method="_on_Player_player_dead"]
