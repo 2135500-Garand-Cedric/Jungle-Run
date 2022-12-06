@@ -12,6 +12,8 @@ onready var player = $Player
 # Affiche le bouton pour commencer
 func _ready():
 	popup.visible = true
+	player.connect("player_dead", self, "_on_player_dead")
+	button.connect("pressed", self, "_on_button_pressed")
 
 # Instancie le prochain niveau et l'affiche a l'ecran
 func _on_Level_Finished():
@@ -49,7 +51,7 @@ func _on_button_pressed():
 func _set_base_config():
 	current_level = 0
 	player.visual.play("default")
-	player.niveau_plateforme = 2
+	Global.niveau_plateforme = 2
 	player.time = 0
 	player.emitted = false
 	Global.score = 0

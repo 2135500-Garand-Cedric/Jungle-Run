@@ -19,6 +19,3 @@ z_index = 10
 [node name="GUI" parent="." instance=ExtResource( 4 )]
 visible = false
 script = ExtResource( 5 )
-
-[connection signal="player_dead" from="Player" to="." method="_on_player_dead"]
-[connection signal="pressed" from="Popup" to="." method="_on_button_pressed"]

@@ -3,7 +3,6 @@ extends KinematicBody2D
 signal player_dead()
 export var speed = 450.0
 export var gravity = 500.0
-var niveau_plateforme = 2
 var Shuriken = preload("res://scenes/Shuriken.tscn")
 var plateformes
 onready var visual = $Visual
@@ -18,6 +17,7 @@ func _process(delta):
 
 # S'occupe du deplacement du joueur
 func _physics_process(delta):
+	Global.posx_joueur = position.x
 	velocity.x = 0
 	# Obtient le deplacement du joueur
 	getInput()
@@ -38,15 +38,15 @@ func getInput():
 		var bullet = Shuriken.instance()
 		bullet._shoot(position, visual.flip_h)
 		get_parent().add_child(bullet)
-	elif Input.is_action_just_pressed("up") and is_on_floor() and niveau_plateforme != 0:
-		plateformes[niveau_plateforme-1].disabled = true
+	elif Input.is_action_just_pressed("up") and is_on_floor() and Global.niveau_plateforme != 0:
+		plateformes[Global.niveau_plateforme-1].disabled = true
 		velocity.y += -450
-		niveau_plateforme += -1
+		Global.niveau_plateforme += -1
 		visual.play("jump")
-	elif Input.is_action_just_pressed("down") and is_on_floor() and niveau_plateforme != 3:
-		plateformes[niveau_plateforme].disabled = true
+	elif Input.is_action_just_pressed("down") and is_on_floor() and Global.niveau_plateforme != 3:
+		plateformes[Global.niveau_plateforme].disabled = true
 		velocity.y += -100
-		niveau_plateforme += 1
+		Global.niveau_plateforme += 1
 		visual.play("jump")
 		
 # Affiche le visuel du joueur
