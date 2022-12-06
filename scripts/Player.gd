@@ -1,16 +1,12 @@
 extends KinematicBody2D
 
 signal player_dead()
-# variable déterminant la vitesse
-# exportée pour pouvoir la modifier dans l'éditeur
 export var speed = 450.0
 export var gravity = 500.0
 var niveau_plateforme = 2
-# variables pour instancier les armes
 var Shuriken = preload("res://scenes/Shuriken.tscn")
 var plateformes
 onready var visual = $Visual
-# variable contenant le vecteur final de déplacement
 var velocity = Vector2();
 var emitted = false
 var time = 0
@@ -20,35 +16,17 @@ func _process(delta):
 		emit_signal("player_dead")
 		emitted = true
 
+# S'occupe du deplacement du joueur
 func _physics_process(delta):
-	# gestion des entrées de l'utilisateur
 	velocity.x = 0
+	# Obtient le deplacement du joueur
 	getInput()
-	# déplacement
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if collision.collider.name == "Enemy":
-			visual.play("dead")
-	if visual.animation == "dead" and visual.frame == 4:
-		visual.playing = false
-		visual.frame = 4
-		time += delta
-		if !emitted and time >= 0.5:
-			emit_signal("player_dead")
-			emitted = true
-	if visual.animation == "jump" and visual.frame == 8:
-		visual.play("default")
-		visual.frame = 0
-		for i in range(4):
-			plateformes[i].disabled = false
-		
+	# Affiche le visuel du deplacement
+	showVisual(delta)
 
-# getInput
-# 
-# Selon les entrées de l'utilisateur
-# - modifie les variable de déplacement 
+# Fait certains actions selon les boutons que l'utilisateur appuie
 func getInput():
 	if Input.is_action_pressed("left")and position .x >= 60:
 		velocity.x += -speed
@@ -71,5 +49,20 @@ func getInput():
 		niveau_plateforme += 1
 		visual.play("jump")
 		
+# Affiche le visuel du joueur
+func showVisual(delta):
+	if visual.animation == "dead" and visual.frame == 4:
+		visual.playing = false
+		visual.frame = 4
+		time += delta
+		if !emitted and time >= 0.5:
+			emit_signal("player_dead")
+			emitted = true
+	if visual.animation == "jump" and visual.frame == 8:
+		visual.play("default")
+		visual.frame = 0
+		for i in range(4):
+			plateformes[i].disabled = false
+	
 
 

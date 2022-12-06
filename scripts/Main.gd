@@ -9,9 +9,11 @@ var current_level = 0
 var current_level_node
 onready var player = $Player
 
+# Affiche le bouton pour commencer
 func _ready():
 	popup.visible = true
 
+# Instancie le prochain niveau et l'affiche a l'ecran
 func _on_Level_Finished():
 	var next_level = (current_level + 1) % levels.size()
 	var next_level_node = levels[next_level].instance()
@@ -22,6 +24,7 @@ func _on_Level_Finished():
 	add_child(next_level_node)
 	current_level_node = next_level_node
 
+# Affiche le popup de fin lorsque le joueur est mort
 func _on_player_dead():
 	current_level_node.queue_free()
 	player.visible = false
@@ -30,6 +33,7 @@ func _on_player_dead():
 	label.text = "\nVous avez perdu\n\nScore: " + str(Global.score)
 	button.text = "Recommencer"
 
+# Demarre le niveau 1 lorsque le bouton commencer ou recommencer se fait clicker
 func _on_button_pressed():
 	_set_base_config()
 	popup.visible = false
@@ -41,6 +45,7 @@ func _on_button_pressed():
 	current_level_node.connect("finished",self,"_on_Level_Finished")
 	add_child(current_level_node)
 
+# Mets les configs de base pour le niveau 1
 func _set_base_config():
 	current_level = 0
 	player.visual.play("default")

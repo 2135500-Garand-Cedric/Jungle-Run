@@ -3,9 +3,11 @@ extends KinematicBody2D
 export var speed = 100
 var velocity = Vector2(-speed,0)
 
+# Spawn l'enemi
 func _spawn(pos):
 	position = pos
 
+# S'occupe du mouvement de l'enemi
 func _physics_process(delta):
 	var collision = move_and_collide(velocity * delta)
 	if position.x <= -100:
@@ -15,6 +17,7 @@ func _physics_process(delta):
 		queue_free()
 		Global.score += 100
 
+# Lorsqu'il y a qqch qui entre dans la zone de collision de l'enemi
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
 		body.visual.play("dead")

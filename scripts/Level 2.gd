@@ -8,6 +8,7 @@ func _ready():
 	print("lvl2")
 	player.plateformes = plateformes
 
+# Envoi des enemis
 func _on_Timer_timeout():
 	spawner._send_enemy(2)
 	

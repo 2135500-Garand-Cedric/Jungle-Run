@@ -8,6 +8,7 @@ onready var bg = [$Sprite, $Sprite2, $Sprite3]
 
 var startPosX = 4000
 
+# Place les trois images
 func _ready():
 	var posX = startPosX
 	var posY = startPosY
@@ -18,6 +19,7 @@ func _ready():
 		posX -= 2000
 		
 
+# Fait tourner les trois images une a la suite de l'autre
 func _physics_process(delta):
 	for screen in bg:
 		screen.position.x -= speed
