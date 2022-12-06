@@ -3,6 +3,7 @@ extends KinematicBody2D
 export var speed = 600
 var velocity = Vector2()
 onready var timer = $Timer
+var lifespan = 0
 
 # Envoi le shuriken dans une certaine direction dependant l'orientation du joueur
 func _shoot(pos, flip_h):
@@ -16,10 +17,11 @@ func _shoot(pos, flip_h):
 
 # Deplace le shuriken tant qu'il ne touche pas qqch ou qu'il est hors de l'ecran
 func _physics_process(delta):
+	lifespan += delta
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		timer.start()
-	if position.x >= 2000 or position.x <= -100:
+	if lifespan >= 1.25:
 		queue_free()
 
 

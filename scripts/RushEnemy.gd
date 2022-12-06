@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var speed = 75
-export var running_speed = 250
+export var speed = 85
+export var running_speed = 300
 var velocity = Vector2(-speed,0)
 var niveau_plateforme
 var time = 0
@@ -17,7 +17,7 @@ func _physics_process(delta):
 	if $Visual.animation == "dead":
 		if $Visual.frame == 4:
 			queue_free()
-			Global.score += 250
+			Global.score += 300
 	else:
 		if niveau_plateforme == Global.niveau_plateforme:
 			time += delta
