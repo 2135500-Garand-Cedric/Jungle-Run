@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 export var speed = 85
-export var running_speed = 300
+export var running_speed = 400
 var velocity = Vector2(-speed,0)
 var niveau_plateforme
 var time = 0

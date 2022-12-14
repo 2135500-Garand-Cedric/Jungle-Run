@@ -1,6 +1,6 @@
 extends Node
 
-var levels = [preload("res://scenes/Level1.tscn"),preload("res://scenes/Level2.tscn")]
+var levels = [preload("res://scenes/Level1.tscn"),preload("res://scenes/Level2.tscn"),preload("res://scenes/Level3.tscn")]
 onready var popup = $Popup
 onready var label = $Popup/Label
 onready var button = $Popup/Button

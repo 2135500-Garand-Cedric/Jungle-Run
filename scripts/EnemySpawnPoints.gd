@@ -28,6 +28,13 @@ func _send_enemy(level):
 		enemy = FastEnemy.instance()
 	elif zombie_level <= 3 and level == 2:
 		enemy = Enemy.instance()
+	elif zombie_level > 6 and level == 3:
+		enemy = RushEnemy.instance()
+		rusher = true
+	elif zombie_level > 1 and level == 3:
+		enemy = FastEnemy.instance()
+	elif zombie_level <= 1 and level == 3:
+		enemy = Enemy.instance()
 	if rusher:
 		enemy._spawn(spawns[spawn_point].global_position, spawn_point)
 	else:
